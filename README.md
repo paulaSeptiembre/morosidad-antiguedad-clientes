@@ -29,14 +29,12 @@ La lectura recomendada es práctica: una relación significativa puede tener un 
 
 ```text
 morosidad-antiguedad-clientes/
-├── data/
-│   └── historico_sintetico.csv
-├── scripts/
-│   ├── analisis_morosidad.py
-│   ├── generar_reporte.py
-│   └── generar_datos_sinteticos.py
-├── output/                 # Resultados generados localmente
-└── README.md
+├── .gitignore
+├── README.md
+├── historico_sintetico.csv
+├── analisis_morosidad.py
+├── generar_datos_sinteticos.py
+└── generar_reporte.py
 ```
 
 ## Ejecución
@@ -44,9 +42,14 @@ morosidad-antiguedad-clientes/
 No se requieren dependencias externas; basta Python 3.10+.
 
 ```powershell
-python scripts/generar_datos_sinteticos.py --output data/historico_sintetico.csv
-python scripts/analisis_morosidad.py --input data/historico_sintetico.csv --outdir output --fecha-corte 2026-06-20 --mora-dias 30 --perm 1000
-python scripts/generar_reporte.py --outdir output --report output/reporte_resultados.md
+python analisis_morosidad.py --input historico_sintetico.csv --outdir output --fecha-corte 2026-06-20 --mora-dias 30 --perm 1000
+python generar_reporte.py --outdir output --report output/reporte_resultados.md
+```
+
+Para generar un nuevo dataset de demostración:
+
+```powershell
+python generar_datos_sinteticos.py --output historico_sintetico.csv
 ```
 
 ## Datos y confidencialidad
